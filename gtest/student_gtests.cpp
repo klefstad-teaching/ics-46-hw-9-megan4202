@@ -21,3 +21,16 @@ TEST(LadderTest, edit_distance_withinTest) {
   EXPECT_FALSE(edit_distance_within("goat", "goalie", 2));
   EXPECT_FALSE(edit_distance_within("cheat", "hat", 1));
 }
+
+TEST(LadderTest, is_adjacentTest) {
+  EXPECT_TRUE(is_adjacent("bog", "log"));
+  EXPECT_TRUE(is_adjacent("bog", "bag"));
+  EXPECT_TRUE(is_adjacent("bog", "bot"));
+  EXPECT_TRUE(is_adjacent("log", "blog"));
+  EXPECT_TRUE(is_adjacent("barn", "bar"));
+  EXPECT_TRUE(is_adjacent("long", "log"));
+  EXPECT_FALSE(is_adjacent("bog", "bog"));
+  EXPECT_FALSE(is_adjacent("blow", "show"));
+  EXPECT_FALSE(is_adjacent("show", "shower"));
+  EXPECT_FALSE(is_adjacent("blogs", "bog"));
+}
