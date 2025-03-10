@@ -32,3 +32,11 @@ bool is_adjacent(const string& word1, const string& word2) {
     if (word1 == word2) return false;
     return edit_distance_within(word1, word2, 1);
 }
+
+void load_words(set<string>& word_list, const string& file_name) {
+    ifstream in(file_name);
+    string word;
+    while (in >> word)
+        word_list.insert(word);
+    in.close();
+}
