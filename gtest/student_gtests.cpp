@@ -34,3 +34,37 @@ TEST(LadderTest, is_adjacentTest) {
   EXPECT_FALSE(is_adjacent("show", "shower"));
   EXPECT_FALSE(is_adjacent("blogs", "bog"));
 }
+/*
+TEST(LadderTest, generate_word_ladderTest) {
+  verify_word_ladder();
+}
+*/
+TEST(DijkstrasTest, dijkstra_shortest_pathTest) {
+  Graph G;
+  vector<int> previous;
+  vector<int> distances;
+  vector<int> expectedDistances;
+  vector<int> expectedShortestPath;
+  file_to_graph("../src/small.txt", G);
+  distances = dijkstra_shortest_path(G, 0, previous);
+  expectedDistances = {0, 3, 6, 1};
+  EXPECT_EQ(distances, expectedDistances);
+  expectedShortestPath = {0, 3, 1};
+  EXPECT_EQ(extract_shortest_path(distances, previous, 1), expectedShortestPath);
+  expectedShortestPath = {0, 3, 1, 2};
+  EXPECT_EQ(extract_shortest_path(distances, previous, 2), expectedShortestPath);
+  expectedShortestPath = {0, 3};
+  EXPECT_EQ(extract_shortest_path(distances, previous, 3), expectedShortestPath);
+  expectedShortestPath = {0};
+  EXPECT_EQ(extract_shortest_path(distances, previous, 0), expectedShortestPath);
+
+  G.clear();
+  file_to_graph("../src/medium.txt", G);
+  distances = dijkstra_shortest_path(G, 0, previous);
+  expectedDistances = {0, 5, 3, 12, 10, 2};
+  EXPECT_EQ(distances, expectedDistances);
+  expectedShortestPath = {0, 5, 2, 3};
+  EXPECT_EQ(extract_shortest_path(distances, previous, 3), expectedShortestPath);
+  expectedShortestPath = {0, 5, 4};
+  EXPECT_EQ(extract_shortest_path(distances, previous, 4), expectedShortestPath);
+}

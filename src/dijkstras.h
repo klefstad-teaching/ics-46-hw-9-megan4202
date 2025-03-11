@@ -4,10 +4,13 @@
 #include <queue>
 #include <limits>
 #include <stack>
+#include <utility>
 
 using namespace std;
 
 constexpr int INF = numeric_limits<int>::max();
+
+using pqDatatype = pair<int, int>;
 
 struct Edge {
     int src=0;
@@ -50,3 +53,8 @@ inline void file_to_graph(const string& filename, Graph& G) {
 vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& previous);
 vector<int> extract_shortest_path(const vector<int>& /*distances*/, const vector<int>& previous, int destination);
 void print_path(const vector<int>& v, int total);
+
+class MinHeapCompare {
+    public:
+        bool operator()(const pqDatatype& v1, const pqDatatype& v2);
+};
