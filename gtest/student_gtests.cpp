@@ -34,11 +34,11 @@ TEST(LadderTest, is_adjacentTest) {
   EXPECT_FALSE(is_adjacent("show", "shower"));
   EXPECT_FALSE(is_adjacent("blogs", "bog"));
 }
-/*
+
 TEST(LadderTest, generate_word_ladderTest) {
   verify_word_ladder();
 }
-*/
+
 TEST(DijkstrasTest, dijkstra_shortest_pathTest) {
   Graph G;
   vector<int> previous;
