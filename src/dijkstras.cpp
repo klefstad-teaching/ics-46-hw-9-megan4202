@@ -40,6 +40,13 @@ vector<int> extract_shortest_path(const vector<int>&, const vector<int>& previou
     return shortestPath;
 }
 
+void print_path(const vector<int>& v, int total) {
+    for (int vertex : v)
+        cout << vertex << ' ';
+    cout << endl;
+    cout << "Total cost is " << total << endl;
+}
+
 bool MinHeapCompare::operator()(const pqDatatype& v1, const pqDatatype& v2) {
     return v1.second > v2.second;
 }
