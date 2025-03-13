@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
     vector<int> distances = dijkstra_shortest_path(G, 0, previous);
     cout << "dijkstras " << file_name << endl;
     for (int dst = 0; dst < G.numVertices; ++dst) {
-        vector<int> shortestPath = extract_shortest_path(previous, dst);
+        vector<int> shortestPath = extract_shortest_path(distances, previous, dst);
         print_path(shortestPath, distances[dst]);
     }
 }
