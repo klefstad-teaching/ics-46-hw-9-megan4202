@@ -29,7 +29,8 @@ TEST(LadderTest, is_adjacentTest) {
   EXPECT_TRUE(is_adjacent("log", "blog"));
   EXPECT_TRUE(is_adjacent("barn", "bar"));
   EXPECT_TRUE(is_adjacent("long", "log"));
-  EXPECT_FALSE(is_adjacent("bog", "bog"));
+  EXPECT_TRUE(is_adjacent("bog", "bog"));
+  EXPECT_TRUE(is_adjacent("wee", "woe"));
   EXPECT_FALSE(is_adjacent("blow", "show"));
   EXPECT_FALSE(is_adjacent("show", "shower"));
   EXPECT_FALSE(is_adjacent("blogs", "bog"));

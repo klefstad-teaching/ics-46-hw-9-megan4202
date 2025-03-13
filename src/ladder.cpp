@@ -9,7 +9,7 @@ bool edit_distance_within(const string& str1, const string& str2, int d) {
         if (str1[i] != str2[j]) {
             if (d <= 0) return false;
             int remainingDiff = d;
-            for (int k = 1; k <= remainingDiff; ++k) {
+            for (int k = 1; length1 != length2 && k <= remainingDiff; ++k) {
                 if (i + k < length1 && str1[i + k] == str2[j]) {
                     i += k;
                     d -= k;
@@ -29,7 +29,6 @@ bool edit_distance_within(const string& str1, const string& str2, int d) {
 }
 
 bool is_adjacent(const string& word1, const string& word2) {
-    if (word1 == word2) return false;
     return edit_distance_within(word1, word2, 1);
 }
 
@@ -53,7 +52,7 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
         ladder_queue.pop();
         string last_word = ladder[ladder.size() - 1];
         for (const string& word : word_list) {
-            if (visited.find(word) == visited.end() && is_adjacent(last_word, word)) {
+            if (is_adjacent(last_word, word) && visited.find(word) == visited.end()) {
                 visited.insert(word);
                 vector<string> new_ladder = ladder;
                 new_ladder.push_back(word);
@@ -79,9 +78,14 @@ void verify_word_ladder() {
 }
 
 void print_word_ladder(const vector<string>& ladder) {
-    for (const string& word : ladder)
-        cout << word << ' ';
-    cout << endl;
+    if (ladder.empty())
+        cout << "No word ladder found.\n";
+    else {
+        cout << "Word ladder found: ";
+        for (const string& word : ladder)
+            cout << word << ' ';
+        cout << endl;
+    }
 }
 
 void error(string word1, string word2, string msg) {
