@@ -51,13 +51,13 @@ TEST(DijkstrasTest, dijkstra_shortest_pathTest) {
   expectedDistances = {0, 3, 6, 1};
   EXPECT_EQ(distances, expectedDistances);
   expectedShortestPath = {0, 3, 1};
-  EXPECT_EQ(extract_shortest_path(distances, previous, 1), expectedShortestPath);
+  EXPECT_EQ(extract_shortest_path(previous, 1), expectedShortestPath);
   expectedShortestPath = {0, 3, 1, 2};
-  EXPECT_EQ(extract_shortest_path(distances, previous, 2), expectedShortestPath);
+  EXPECT_EQ(extract_shortest_path(previous, 2), expectedShortestPath);
   expectedShortestPath = {0, 3};
-  EXPECT_EQ(extract_shortest_path(distances, previous, 3), expectedShortestPath);
+  EXPECT_EQ(extract_shortest_path(previous, 3), expectedShortestPath);
   expectedShortestPath = {0};
-  EXPECT_EQ(extract_shortest_path(distances, previous, 0), expectedShortestPath);
+  EXPECT_EQ(extract_shortest_path(previous, 0), expectedShortestPath);
 
   G.clear();
   file_to_graph("../src/medium.txt", G);
@@ -65,7 +65,7 @@ TEST(DijkstrasTest, dijkstra_shortest_pathTest) {
   expectedDistances = {0, 5, 3, 12, 10, 2};
   EXPECT_EQ(distances, expectedDistances);
   expectedShortestPath = {0, 5, 2, 3};
-  EXPECT_EQ(extract_shortest_path(distances, previous, 3), expectedShortestPath);
+  EXPECT_EQ(extract_shortest_path(previous, 3), expectedShortestPath);
   expectedShortestPath = {0, 5, 4};
-  EXPECT_EQ(extract_shortest_path(distances, previous, 4), expectedShortestPath);
+  EXPECT_EQ(extract_shortest_path(previous, 4), expectedShortestPath);
 }
